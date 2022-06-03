@@ -166,4 +166,56 @@ and gender = 'F';
 
 
 
+SELECT DISTINCT       (i used DISTINCT because i want to extract data for hiring date of employees without duplicate)  
+    hire_date
+FROM
+    employees;
+    
+    
+    
+    
+# ORDER BY - exercise.   (The ORDER BY is used to refine an output)
+
+SELECT 
+    *
+FROM
+    employees
+ORDER BY hire_date DESC;
+
+
+#GROUP BY
+NOTE: GROUP BY must be placed immediately after the where condition if any, and just before the WHERE clause.
+NOTE: Always include the field you have grouped your results by in the SELECT statement
+
+SELECT 
+	first_name, COUNT(first_name)   #(In most cases when i use an aggregate function, i mostly add the GROUP BY clause)
+FROM
+    employees
+GROUP BY first_name
+order by first_name;
+
+
+
+#Using Aliases AS & count
+SELECT 
+    salary, COUNT(emp_no) AS emps_with_same_salary   (The AS is used to rename a selection in the query)
+FROM
+    salaries
+WHERE
+    salary > 80000
+GROUP BY salary
+ORDER BY salary;
+
+
+
+#having
+#Select all employees whose average salary is higher than $120,000 per annum.
+SELECT 
+    emp_no, AVG(salary)
+FROM
+    salaries
+GROUP BY emp_no
+HAVING AVG(salary) > 120000
+ORDER BY emp_no;
+
 
